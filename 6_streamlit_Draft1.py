@@ -1,8 +1,9 @@
 
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import seaborn as sns
+
 
 sns.set_style("dark")
 
@@ -53,9 +54,9 @@ if option_swim == highest_paid:
 	                                                    .to_frame().reset_index())
 	token_prices_top_10 = token_prices.sort_values(by=['total_price'],ascending=False)[:10]
 	sns.barplot(x = 'asset_token_id', y = 'total_price', data = token_prices_top_10, order = token_prices_top_10['asset_token_id'])
-	plt.xlabel("token ID", size=12)
-	plt.ylabel("\$$", size=15)
-	plt.title("Highest Price Paid for a Poet", size=15)
+	plt.pyplot.xlabel("token ID", size=12)
+	plt.pyplot.ylabel("\$$", size=15)
+	plt.pyplot.title("Highest Price Paid for a Poet", size=15)
 	st.pyplot(fig)
 
 ## VOLUME OF TRADE
@@ -72,9 +73,9 @@ if option_swim == most_traded:
 	highest_top = highest_volume[highest_volume.asset_num_sales > 9]
 	(sns.barplot(x = 'asset_token_id', y = 'asset_num_sales', 
 	             data = highest_top, order = highest_top['asset_token_id']))
-	plt.xlabel("token ID", size=12)
-	plt.ylabel("price paid", size=12)
-	plt.title("Volume Trade", size=15)
+	plt.pyplot.xlabel("token ID", size=12)
+	plt.pyplot.ylabel("price paid", size=12)
+	plt.pyplot.title("Volume Trade", size=15)
 	st.pyplot(fig)
 
 ## HIGHEST AVE. TRADING PRICE 
@@ -99,10 +100,10 @@ if option_swim == highest_average:
 	top_price_per_trade = price_per_trade[price_per_trade.average_price_per_trade >50000]
 	(sns.barplot(x = 'asset_token_id', y = 'average_price_per_trade', 
              data = top_price_per_trade, order = top_price_per_trade['asset_token_id']))
-	plt.xlabel("token ID", size=12)
+	plt.pyplot.xlabel("token ID", size=12)
 	# plt.xticks(rotation=60)
-	plt.ylabel("average price during trades", size=12)
-	plt.title("Highest Average Prices", size=15)
+	plt.pyplot.ylabel("average price during trades", size=12)
+	plt.pyplot.title("Highest Average Prices", size=15)
 	st.pyplot(fig)
 
 
@@ -129,11 +130,11 @@ if option_people == sellers_:
 	top_sellers = sellers.iloc[:15]
 	(sns.barplot(x = 'seller_username', y = 'payment_token_usd_price', 
 	             data = top_sellers, order = top_sellers['seller_username']))
-	plt.xlabel("seller username", size=12)
-	plt.xticks(rotation=70)
-	plt.ylabel("total money received", size=12)
-	plt.title("Sellers By Total Amount Received", size=15)
-	plt.savefig("Sellers By Total Amount Received.png", bbox_inches='tight', dpi=260)
+	plt.pyplot.xlabel("seller username", size=12)
+	plt.pyplot.xticks(rotation=70)
+	plt.pyplot.ylabel("total money received", size=12)
+	plt.pyplot.title("Sellers By Total Amount Received", size=15)
+	plt.pyplot.savefig("Sellers By Total Amount Received.png", bbox_inches='tight', dpi=260)
 	st.pyplot(fig)
 
 if option_people == buyers_: 
@@ -149,10 +150,10 @@ if option_people == buyers_:
 	top_buyers = buyers.iloc[:15]
 	(sns.barplot(x = 'winner_account_username', y = 'payment_token_usd_price', 
 	             data = top_buyers, order = top_buyers['winner_account_username']))
-	plt.xlabel("buyers username", size=12)
-	plt.xticks(rotation=70)
-	plt.ylabel("total money spent", size=12)
-	plt.title("Buyers By Total Amount Spent", size=15)
+	plt.pyplot.xlabel("buyers username", size=12)
+	plt.pyplot.xticks(rotation=70)
+	plt.pyplot.ylabel("total money spent", size=12)
+	plt.pyplot.title("Buyers By Total Amount Spent", size=15)
 	st.pyplot(fig)
 
 if option_people == interactions_freq: 
@@ -177,10 +178,10 @@ if option_people == interactions_freq:
 	(sns.barplot(x = 'seller_buyer_combo', y = 'asset_num_sales', 
              data = top_num_interactions, 
              order = top_num_interactions['seller_buyer_combo']))
-	plt.xlabel("From Seller to Buyer", size=12)
-	plt.xticks(rotation=70)
-	plt.ylabel("Number of sales", size=12)
-	plt.title("Total Number of Interactions between Specific Buyers and Sellers", size=15)
+	plt.pyplot.xlabel("From Seller to Buyer", size=12)
+	plt.pyplot.xticks(rotation=70)
+	plt.pyplot.ylabel("Number of sales", size=12)
+	plt.pyplot.title("Total Number of Interactions between Specific Buyers and Sellers", size=15)
 	st.pyplot(fig)
 
 if option_people == interactions_amount: 
@@ -204,10 +205,10 @@ if option_people == interactions_amount:
 	(sns.barplot(x = 'seller_buyer_combo', y = 'total_price', 
              data = top_usd_interactions, 
              order = top_usd_interactions['seller_buyer_combo']))
-	plt.xlabel("From Seller to Buyer", size=12)
-	plt.xticks(rotation=70)
-	plt.ylabel("Amount of sales", size=12)
-	plt.title("Total Amount Exchanged between Specific Buyers and Sellers", size=15)
+	plt.pyplot.xlabel("From Seller to Buyer", size=12)
+	plt.pyplot.xticks(rotation=70)
+	plt.pyplot.ylabel("Amount of sales", size=12)
+	plt.pyplot.title("Total Amount Exchanged between Specific Buyers and Sellers", size=15)
 	st.pyplot(fig)
 
 daily_ = 'Day to day'.upper()
@@ -227,10 +228,10 @@ if option_trends == daily_:
                  .to_frame().reset_index())
 	(sns.lineplot(x = 'created_date', y = 'total_price', 
              data = monthly_sales))
-	plt.xlabel("week of the year", size=12)
-	plt.xticks(rotation=70)
-	plt.ylabel("total amount of sales", size=12)
-	plt.title("Total Amount of Sales by Week", size=15)
+	plt.pyplot.xlabel("week of the year", size=12)
+	plt.pyplot.xticks(rotation=70)
+	plt.pyplot.ylabel("total amount of sales", size=12)
+	plt.pyplot.title("Total Amount of Sales by Week", size=15)
 	st.pyplot(fig)
 
 
@@ -244,11 +245,11 @@ if option_trends == monthly_:
                  .to_frame().reset_index())
 	ax = sns.lineplot(x = 'created_date', y = 'total_price', 
              data = daily_sales)
-	plt.xlabel("day of the year", size=12)
+	plt.pyplot.xlabel("day of the year", size=12)
 	all_xticks = ax.get_xticks()
-	plt.xticks([all_xticks[0], all_xticks[-1]], visible=True, rotation="horizontal")
-	plt.ylabel("daily total sales", size=12)
-	plt.title("Daily Total Amount of Sales", size=15)
+	plt.pyplot.xticks([all_xticks[0], all_xticks[-1]], visible=True, rotation="horizontal")
+	plt.pyplot.ylabel("daily total sales", size=12)
+	plt.pyplot.title("Daily Total Amount of Sales", size=15)
 	st.pyplot(fig)
 
 
