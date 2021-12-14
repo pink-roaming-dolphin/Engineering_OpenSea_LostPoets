@@ -46,7 +46,7 @@ option_swim = st.selectbox(
 
 ## HIGHEST PRICES PAID
 if option_swim == highest_paid: 
-	fig, ax = plt.subplots()
+	fig, ax = plt.pyplot.subplots()
 	fig.patch.set_alpha(0)
 	ax.scatter([1, 2, 3], [1, 2, 3])
 	# DF to use 
@@ -61,7 +61,7 @@ if option_swim == highest_paid:
 
 ## VOLUME OF TRADE
 if option_swim == most_traded: 
-	fig, ax = plt.subplots()
+	fig, ax = plt.pyplot.subplots()
 	fig.patch.set_alpha(0)
 	ax.scatter([1, 2, 3], [1, 2, 3])
 	# DF to use 	
