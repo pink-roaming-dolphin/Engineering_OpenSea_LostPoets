@@ -214,7 +214,7 @@ daily_ = 'Day to day'.upper()
 monthly_ = 'Month to month'.upper()
 prompt = 'When is the question'
 option_trends = st.selectbox(
-     'And daily and montly trends for the poets amongst us 🥦🍓☔️🌞',
+     'And daily and monthly trends for the poets amongst us 🥦🍓☔️🌞',
      (prompt, daily_, monthly_))
 
 if option_trends == daily_: 
