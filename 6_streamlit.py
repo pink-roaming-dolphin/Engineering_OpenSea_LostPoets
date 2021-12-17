@@ -237,7 +237,7 @@ if option_people == owners_:
 	plt.xticks(rotation=70)
 	plt.ylabel("Number of Assets Held", size=12)
 	plt.title("Owners with Highest Number of Assets", size=15)
-	t.pyplot(fig)
+	st.pyplot(fig)
 
 ####################################
 #####SECTION 3######################
