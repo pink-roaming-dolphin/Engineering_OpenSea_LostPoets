@@ -4,8 +4,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 sns.set_style("dark")
 
+
+
+####################################
+#####OPENING SALUDOS################
+####################################
 st.write(
 '''
 ## LOSTPOETS in (the) OpenSea(s)
@@ -14,26 +20,29 @@ st.write(
 '''
 )
 
-poets = pd.read_csv('poets_clean.csv')
-# st.dataframe(poets)
+####################################
+#####READ DATA IN###################
+####################################
+poets_df = pd.read_csv('poets_clean.csv')
+# st.dataframe(poets_df)
 
 sales_df = pd.read_csv('sales.csv')
 # st.dataframe(sales_df)
 
 
-## cleaning 
+## cleaning for sales_df
 sales_df.total_price = sales_df.total_price.astype(float) 
 sales_df.total_price = sales_df.total_price/10.**18
 sales_df.total_price = sales_df.total_price * sales_df.payment_token_usd_price
 sales_df.asset_token_id = sales_df.asset_token_id.astype(int) 
 sales_df['created_date'] = pd.to_datetime(sales_df['created_date'])
 
-# st.write(
-# '''
-# **Highest Prices**
-# '''
-# )
+## cleaning for poets_df
 
+
+####################################
+#####SECTION 1######################
+####################################
 highest_paid = 'Highest price paid for a poet 😱'.upper()
 most_traded = 'Most frequently traded poets (maestros 🎓)'.upper()
 highest_average = 'Poets with highest average trading price ☄️'.upper()
@@ -41,9 +50,10 @@ prompt = 'Do you want to know them better?'
 option_swim = st.selectbox(
      'Poets swimming amongst us ☁️☁️ ',
      (prompt, highest_paid, most_traded, highest_average))
-##☁️☁️
+
 
 ## HIGHEST PRICES PAID
+
 if option_swim == highest_paid: 
 	fig, ax = plt.subplots()
 	fig.patch.set_alpha(0)
@@ -106,15 +116,19 @@ if option_swim == highest_average:
 	st.pyplot(fig)
 
 
-
+####################################
+#####SECTION 2######################
+####################################
 sellers_ = 'Who is selling the most?'.upper()
 buyers_ = 'Who is buying the most?'.upper()
 interactions_freq = 'Interactions interactions! Who is brushing shoulders the most?'.upper()
 interactions_amount = 'And the highest amount of shoulder brushing/amount exchanged?'.upper()
+owners_ = 'Who owns the most poets?'.upper()
 prompt = 'Who is exchanging the poets?'
 option_people = st.selectbox(
      'Fish in the sea 🐬',
-     (prompt, sellers_, buyers_, interactions_freq, interactions_amount))
+     (prompt, sellers_, buyers_, interactions_freq, interactions_amount, owners_))
+
 
 if option_people == sellers_: 
 	fig, ax = plt.subplots()
@@ -133,7 +147,6 @@ if option_people == sellers_:
 	plt.xticks(rotation=70)
 	plt.ylabel("total money received", size=12)
 	plt.title("Sellers By Total Amount Received", size=15)
-	plt.savefig("Sellers By Total Amount Received.png", bbox_inches='tight', dpi=260)
 	st.pyplot(fig)
 
 if option_people == buyers_: 
@@ -210,6 +223,25 @@ if option_people == interactions_amount:
 	plt.title("Total Amount Exchanged between Specific Buyers and Sellers", size=15)
 	st.pyplot(fig)
 
+if option_people == owners_: 
+	fig, ax = plt.subplots()
+	fig.patch.set_alpha(0)
+	ax.scatter([1, 2, 3], [1, 2, 3])
+	sold_poets = poets_df[poets_df.num_sales != 0]
+	assets_by_owner = sold_poets.owner_username.value_counts()
+	top_owners = assets_by_owner[assets_by_owner>10].to_frame().reset_index()
+	(sns.barplot(x = 'index', y = 'owner_username', 
+	             data = top_owners, 
+	             order = top_owners['index']))
+	plt.xlabel("Owner Usernames", size=12)
+	plt.xticks(rotation=70)
+	plt.ylabel("Number of Assets Held", size=12)
+	plt.title("Owners with Highest Number of Assets", size=15)
+	t.pyplot(fig)
+
+####################################
+#####SECTION 3######################
+####################################
 daily_ = 'Day to day'.upper()
 monthly_ = 'Month to month'.upper()
 prompt = 'When is the question'
@@ -252,7 +284,9 @@ if option_trends == monthly_:
 	st.pyplot(fig)
 
 
-
+####################################
+#####DESCRIBE COLLECTION############
+####################################
 st.write(
 '''
 ### The Collection 🎨🖼️
