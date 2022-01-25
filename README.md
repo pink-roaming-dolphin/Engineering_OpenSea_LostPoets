@@ -1,3 +1,5 @@
+Blog post about project here: [Medium - OpenSea Project](https://medium.com/@zey-o/lost-poets-on-the-loose-sleeping-interlocutors-1d7696d25a3b)
+
 ## Analyze & Play: LostPoets on OpenSea
 
 **Abstract**
