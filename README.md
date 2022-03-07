@@ -1,5 +1,12 @@
 Blog post about project here: [Medium - OpenSea Project](https://medium.com/@zey-o/lost-poets-on-the-loose-sleeping-interlocutors-1d7696d25a3b)
 
+Streamlit apps for the 2 parts of the project can be found here: 
+- [5 pm Tea: Generating more Poets with GAN](https://share.streamlit.io/zey-o/engineering_opensea_lostpoets/main/gan_poets.py)
+- [LostPoets financial analysis](https://share.streamlit.io/zey-o/engineering_opensea_lostpoets/main/financial_sales_streamlit.py)
+
+Project presentation can be found here: [presentation](https://github.com/zey-o/Engineering_OpenSea_LostPoets/blob/main/Presentation_OpenSea_LostPoets.pdf)
+
+
 ## Analyze & Play: LostPoets on OpenSea
 
 **Abstract**
@@ -32,12 +39,3 @@ One of the columns in the assets data was image URL’s so 10K images were scrap
 - Matplotlib, Seabrn for visualization & EDA 
 - GoogleColab for modelling 
 - Streamlit for web application  
-
-**Communication**
-
-Streamlit apps for the 2 parts of the project can be found here: 
-- [5 pm Tea: Generating more Poets with GAN](https://share.streamlit.io/zey-o/engineering_opensea_lostpoets/main/gan_poets.py)
-- [LostPoets financial analysis](https://share.streamlit.io/zey-o/engineering_opensea_lostpoets/main/financial_sales_streamlit.py)
-
-Project presentation can be found here: [presentation](https://github.com/zey-o/Engineering_OpenSea_LostPoets/blob/main/Presentation_OpenSea_LostPoets.pdf)
-
